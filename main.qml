@@ -6,15 +6,26 @@ Window {
     width: 360
     height: 360
 
-    MouseArea {
+    GridView {
         anchors.fill: parent
-        onClicked: {
-            Qt.quit();
-        }
+        anchors.margins: 20
+
+        clip: true
+
+        model: 16
+
+        cellWidth: 51
+        cellHeight: 51
+
+        delegate: mineComponent
     }
 
-    Text {
-        text: qsTr("Hello World")
-        anchors.centerIn: parent
+    Component {
+        id: mineComponent
+
+        Mine {
+            text: "02"
+            // anchors.centerIn: parent
+        }
     }
 }
