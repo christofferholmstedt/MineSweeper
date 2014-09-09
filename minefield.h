@@ -6,18 +6,18 @@
 class Minefield
 {
 public:
-    Minefield(const QString &type, const QString &size);
+    Minefield(const bool hasMine);
 
-    QString type() const;
-    QString size() const;
-
-//    bool hasMine() const;
-//    bool isLocked() const;
-//    bool isVisited() const;
+    bool hasMine() const;
+    bool isLocked() const;
+    bool isVisited() const;
+    int noOfNeighbouringMines() const;
 
 private:
-    QString type_;
-    QString size_;
+    bool hasMine_;
+    bool isLocked_;
+    bool isVisited_;
+    int noOfNeighbouringMines_;
 
 };
 

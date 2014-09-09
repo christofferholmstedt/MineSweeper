@@ -12,8 +12,11 @@ public:
     explicit MinefieldModel(QObject *parent = 0);
 
     enum MinefieldRoles {
-        TypeRole = Qt::UserRole + 1,
-        SizeRole
+        HasMineRole = Qt::UserRole + 1,
+        IsVisitedRole,
+        IsLockedRole,
+        NoOfNeighbouringMinesRole,
+        NoOfRows
     };
 
     void addMinefield(const Minefield &minefield);

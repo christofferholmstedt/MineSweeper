@@ -12,9 +12,20 @@ int main(int argc, char *argv[])
     MinefieldModel model;
 
     int i = 0;
+    int randomNumber;
+    bool hasMine;
     while (i < 25)
     {
-        model.addMinefield(Minefield("test", "test2"));
+        randomNumber = rand() % 2;
+        if (randomNumber == 0)
+        {
+            hasMine = false;
+        }
+        else
+        {
+            hasMine = true;
+        }
+        model.addMinefield(Minefield(hasMine));
         i++;
     }
 

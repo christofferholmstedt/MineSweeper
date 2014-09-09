@@ -5,6 +5,7 @@ Rectangle {
     property string text: numberOfMines.toString()
     property int fontSize
     property bool bold: true
+    property bool hasMineQml
 
     height: 50
     width: height
@@ -22,6 +23,7 @@ Rectangle {
         height: parent.height
 
         onClicked: {
+            console.log(hasMine.toString());
             parent.numberOfMines++;
             if (parent.numberOfMines >= 10)
             {

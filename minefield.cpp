@@ -1,17 +1,29 @@
 #include "minefield.h"
 
-Minefield::Minefield(const QString &type, const QString &size)
-    : type_(type), size_(size)
+Minefield::Minefield(const bool hasMine)
+                     : hasMine_(hasMine)
 {
-
+    isLocked_ = false;
+    isVisited_ = false;
+    noOfNeighbouringMines_ = 0;
 }
 
-QString Minefield::type() const
+bool Minefield::hasMine() const
 {
-    return type_;
+    return hasMine_;
 }
 
-QString Minefield::size() const
+bool Minefield::isLocked() const
 {
-    return size_;
+    return isLocked_;
+}
+
+bool Minefield::isVisited() const
+{
+    return isVisited_;
+}
+
+int Minefield::noOfNeighbouringMines() const
+{
+    return noOfNeighbouringMines_;
 }

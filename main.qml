@@ -26,13 +26,14 @@ Window {
         Repeater {
             id: mineRepeater
             model: minefieldModel
-            delegate: Mine {
-                    id: mine
-                    text: type
-                    height: mineWidthAndHeight
-                    width: mineWidthAndHeight
-                    numberOfMines: index
-                }
+             Mine {
+                id: mine
+                hasMineQml: hasMine
+                text: hasMine
+                height: mineWidthAndHeight
+                width: mineWidthAndHeight
+                numberOfMines: index
+            }
         }
     }
 
