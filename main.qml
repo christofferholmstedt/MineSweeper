@@ -5,15 +5,17 @@ Window {
     id: root
     property int mineWidthAndHeight: 25
     visible: true
-    width: (mineGrid.columns * mineWidthAndHeight) +
-           (mineGrid.spacing * (mineGrid.columns - 1))
-    height: width
+    width: 500
+    height: 500
+//    width: (mineGrid.columns * mineWidthAndHeight) +
+//           (mineGrid.spacing * (mineGrid.columns - 1))
+//    height: width
     color: "black"
 
-    minimumHeight: height
-    minimumWidth: width
-    maximumHeight: height
-    maximumWidth: width
+//    minimumHeight: height
+//    minimumWidth: width
+//    maximumHeight: height
+//    maximumWidth: width
 
     Grid {
         id: mineGrid
@@ -23,13 +25,14 @@ Window {
 
         Repeater {
             id: mineRepeater
-            model: 256
-            Mine {
-                id: mine
-                height: mineWidthAndHeight
-                width: mineWidthAndHeight
-                numberOfMines: index
-            }
+            model: minefieldModel
+            delegate: Mine {
+                    id: mine
+                    text: type
+                    height: mineWidthAndHeight
+                    width: mineWidthAndHeight
+                    numberOfMines: index
+                }
         }
     }
 
