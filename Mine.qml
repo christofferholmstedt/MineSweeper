@@ -1,19 +1,18 @@
 import QtQuick 2.0
 
 Rectangle {
-    property string text: "0"
-    property int fontSize: 35
+    property int numberOfMines
+    property string text: numberOfMines.toString()
+    property int fontSize
     property bool bold: true
+
+    height: 50
+    width: height
 
     signal clicked
 
     id: root
-    width: 50
-    height: 50
-    color: "#16599b"
-
-    border.color: "#0b7e2b"
-    border.width: 1
+    color: "#798086"
 
     MouseArea {
         id: mouseArea1
@@ -22,6 +21,23 @@ Rectangle {
         width: parent.width
         height: parent.height
 
+        onClicked: {
+            parent.numberOfMines++;
+            if (parent.numberOfMines >= 10)
+            {
+                root.state = "unknown";
+                parent.numberOfMines = 1;
+            }
+            else if (parent.numberOfMines >= 7)
+            {
+                root.state = "foundMine";
+            }
+            else if (parent.numberOfMines >= 3)
+            {
+                root.state = "foundNoMine";
+            }
+            parent.text = parent.numberOfMines.toString();
+        }
     }
 
     Text {
@@ -31,17 +47,33 @@ Rectangle {
         font.family: "Verdana"
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
-        font.pixelSize: root.fontSize
+        font.pixelSize: root.height / 2
     }
     states: [
         State {
-            name: "pressed"
+            id: state1
+            name: "unknown"
 
             PropertyChanges {
                 target: root
-                color: "#0b7e2b"
+                color: "#798086"
+            }
+        },
+        State {
+            name: "foundNoMine"
+
+            PropertyChanges {
+                target: root
+                color: "#1fa436"
             }
 
+        },
+        State {
+            name: "foundMine"
+            PropertyChanges {
+                target: root
+                color: "#c22b2b"
+            }
         }
     ]
 

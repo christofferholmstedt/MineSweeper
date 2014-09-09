@@ -2,30 +2,35 @@ import QtQuick 2.2
 import QtQuick.Window 2.1
 
 Window {
+    id: root
+    property int mineWidthAndHeight: 25
     visible: true
-    width: 360
-    height: 360
+    width: (mineGrid.columns * mineWidthAndHeight) +
+           (mineGrid.spacing * (mineGrid.columns - 1))
+    height: width
+    color: "black"
 
-    GridView {
+    minimumHeight: height
+    minimumWidth: width
+    maximumHeight: height
+    maximumWidth: width
+
+    Grid {
+        id: mineGrid
         anchors.fill: parent
-        anchors.margins: 20
+        columns: Math.sqrt(mineRepeater.model)
+        spacing: 1
 
-        clip: true
-
-        model: 16
-
-        cellWidth: 51
-        cellHeight: 51
-
-        delegate: mineComponent
-    }
-
-    Component {
-        id: mineComponent
-
-        Mine {
-            text: "02"
-            // anchors.centerIn: parent
+        Repeater {
+            id: mineRepeater
+            model: 256
+            Mine {
+                id: mine
+                height: mineWidthAndHeight
+                width: mineWidthAndHeight
+                numberOfMines: index
+            }
         }
     }
+
 }
