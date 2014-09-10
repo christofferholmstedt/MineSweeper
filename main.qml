@@ -5,22 +5,22 @@ Window {
     id: root
     property int mineWidthAndHeight: 25
     visible: true
-    width: 500
-    height: 500
-//    width: (mineGrid.columns * mineWidthAndHeight) +
-//           (mineGrid.spacing * (mineGrid.columns - 1))
-//    height: width
+//    width: 500
+//    height: 500
+    width: (mineGrid.columns * mineWidthAndHeight) +
+           (mineGrid.spacing * (mineGrid.columns - 1))
+    height: width
     color: "black"
 
-//    minimumHeight: height
-//    minimumWidth: width
-//    maximumHeight: height
-//    maximumWidth: width
+    minimumHeight: height
+    minimumWidth: width
+    maximumHeight: height
+    maximumWidth: width
 
     Grid {
         id: mineGrid
         anchors.fill: parent
-        columns: Math.sqrt(mineRepeater.model)
+        columns: Math.sqrt(minefieldModel.noOfMinefields)
         spacing: 1
 
         Repeater {

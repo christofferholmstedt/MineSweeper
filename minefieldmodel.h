@@ -8,6 +8,8 @@
 class MinefieldModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(int noOfMinefields READ noOfMinefields NOTIFY noOfMinefieldsChanged)
+
 public:
     explicit MinefieldModel(QObject *parent = 0);
 
@@ -25,7 +27,9 @@ public:
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
+    int noOfMinefields() const;
 signals:
+    void noOfMinefieldsChanged();
 
 public slots:
 

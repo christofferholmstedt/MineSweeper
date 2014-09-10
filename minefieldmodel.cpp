@@ -18,6 +18,11 @@ int MinefieldModel::rowCount(const QModelIndex &parent) const
     return minefields_.count();
 }
 
+int MinefieldModel::noOfMinefields() const
+{
+    return minefields_.count();
+}
+
 QVariant MinefieldModel::data(const QModelIndex &index, int role) const
 {
     if (index.row() < 0 || index.row() >= minefields_.count())
