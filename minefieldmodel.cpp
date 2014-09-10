@@ -46,14 +46,6 @@ QVariant MinefieldModel::data(const QModelIndex &index, int role) const
     {
         return minefield.noOfNeighbouringMines();
     }
-    // Start from here next time
-    // This is probably wrong way of doing it.
-    // how do I access number of items in model from qml?
-    // http://qt-project.org/doc/qt-5/qml-qtqml-models-listmodel.html
-    else if (role == NoOfRows)
-    {
-        return minefields_.count();
-    }
     return QVariant();
 }
 
@@ -64,6 +56,5 @@ QHash<int, QByteArray> MinefieldModel::roleNames() const
     roles[IsVisitedRole] = "isVisited";
     roles[IsLockedRole] = "isLocked";
     roles[NoOfNeighbouringMinesRole] = "noOfNeighbouringMines";
-    roles[NoOfRows] = "noOfRows";
     return roles;
 }

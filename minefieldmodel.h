@@ -18,7 +18,6 @@ public:
         IsVisitedRole,
         IsLockedRole,
         NoOfNeighbouringMinesRole,
-        NoOfRows
     };
 
     void addMinefield(const Minefield &minefield);

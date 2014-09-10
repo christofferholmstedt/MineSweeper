@@ -23,7 +23,6 @@ Rectangle {
         height: parent.height
 
         onClicked: {
-            console.log(hasMine.toString());
             parent.numberOfMines++;
             if (parent.numberOfMines >= 10)
             {
