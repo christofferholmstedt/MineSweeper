@@ -5,8 +5,6 @@ Window {
     id: root
     property int mineWidthAndHeight: 25
     visible: true
-//    width: 500
-//    height: 500
     width: (mineGrid.columns * mineWidthAndHeight) +
            (mineGrid.spacing * (mineGrid.columns - 1))
     height: width
