@@ -19,4 +19,5 @@ include(deployment.pri)
 
 HEADERS += \
     minefield.h \
-    minefieldmodel.h
+    minefieldmodel.h \
+    lib/grid.h

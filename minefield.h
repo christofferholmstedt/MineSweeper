@@ -6,8 +6,9 @@
 class Minefield
 {
 public:
-    Minefield(const bool hasMine);
+    Minefield();
 
+    void setHasMine(const bool hasMine);
     bool hasMine() const;
     bool isLocked() const;
     bool isVisited() const;

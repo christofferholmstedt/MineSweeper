@@ -1,11 +1,16 @@
 #include "minefield.h"
 
-Minefield::Minefield(const bool hasMine)
-                     : hasMine_(hasMine)
+Minefield::Minefield()
 {
+    hasMine_ = false;
     isLocked_ = false;
     isVisited_ = false;
     noOfNeighbouringMines_ = 0;
+}
+
+void Minefield::setHasMine(const bool hasMine)
+{
+   hasMine_ = hasMine;
 }
 
 bool Minefield::hasMine() const

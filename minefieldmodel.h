@@ -4,8 +4,9 @@
 #include <QAbstractListModel>
 
 #include "minefield.h"
+#include "lib/grid.h"
 
-class MinefieldModel : public QAbstractListModel
+class MinefieldModel : public QAbstractTableModel
 {
     Q_OBJECT
     Q_PROPERTY(int noOfMinefields READ noOfMinefields NOTIFY noOfMinefieldsChanged)
@@ -20,9 +21,11 @@ public:
         NoOfNeighbouringMinesRole,
     };
 
-    void addMinefield(const Minefield &minefield);
+//    void addMinefield(const Minefield &minefield);
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
+
+    int columnCount(const QModelIndex &parent = QModelIndex()) const;
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
@@ -36,7 +39,10 @@ protected:
     QHash<int, QByteArray> roleNames() const;
 
 private:
-    QList<Minefield> minefields_;
+    int noOfMinefields_;
+    // Grid::Grid<Minefield> minefields_(int rows, int cols);
+    // std::vector<std::vector<Minefield> > minefields_;
+    // QList<Minefield> minefields_;
 };
 
 #endif // MINEFIELDMODEL_H
