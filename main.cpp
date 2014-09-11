@@ -9,10 +9,10 @@ int main(int argc, char *argv[])
 {
     // Set this to a number that gets an even number when sqrt.
     // That is: 16, 25, 36 ... 100 ... 144 ... 225 ... 900
-   // int noOfMinefields = 144;
+    int noOfMinefields = 144;
     QGuiApplication app(argc, argv);
-    // MinefieldModel model(100);
-    MinefieldModel model;
+
+    MinefieldModel model(&app, std::sqrt(noOfMinefields),std::sqrt(noOfMinefields));
 
 //    int i = 0;
 //    int randomNumber;

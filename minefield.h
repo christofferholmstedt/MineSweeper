@@ -1,8 +1,6 @@
 #ifndef MINEFIELD_H
 #define MINEFIELD_H
 
-#include <QString>
-
 class Minefield
 {
 public:

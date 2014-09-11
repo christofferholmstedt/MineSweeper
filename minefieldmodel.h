@@ -12,7 +12,7 @@ class MinefieldModel : public QAbstractTableModel
     Q_PROPERTY(int noOfMinefields READ noOfMinefields NOTIFY noOfMinefieldsChanged)
 
 public:
-    explicit MinefieldModel(QObject *parent = 0);
+    explicit MinefieldModel(QObject *parent = 0, const int rows = 3, const int columns = 3);
 
     enum MinefieldRoles {
         HasMineRole = Qt::UserRole + 1,
@@ -39,8 +39,10 @@ protected:
     QHash<int, QByteArray> roleNames() const;
 
 private:
+    void resize(const int rows, const int columns);
+
     int noOfMinefields_;
-    // Grid::Grid<Minefield> minefields_(int rows, int cols);
+    Grid::Grid<Minefield> minefields_;
     // std::vector<std::vector<Minefield> > minefields_;
     // QList<Minefield> minefields_;
 };

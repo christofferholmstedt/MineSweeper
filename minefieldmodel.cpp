@@ -1,14 +1,19 @@
 #include "minefieldmodel.h"
 
-MinefieldModel::MinefieldModel(QObject *parent) :
+MinefieldModel::MinefieldModel(QObject *parent, const int rows, const int columns) :
     QAbstractTableModel(parent)
 {
-   this->minefields_(3,3);
+    this->resize(rows, columns);
+}
+
+void MinefieldModel::resize(const int rows, const int columns)
+{
+    minefields_ = Grid::Grid<Minefield>(rows, columns);
 }
 
 //void MinefieldModel::addMinefield(const Minefield &minefield)
 //{
-//    beginInsertRows(QModelIndex(), rowCount(), rowCount());
+//     beginInsertRows(QModelIndex(), rowCount(), rowCount());
 //    // Overload the << operator (same as set function).
 //    minefields_ << minefield;
 //    endInsertRows();
@@ -33,32 +38,32 @@ int MinefieldModel::noOfMinefields() const
 
 QVariant MinefieldModel::data(const QModelIndex &index, int role) const
 {
-    if (role == Qt::DisplayRole)
-    {
-        // minefields_.get(x,y) needs to be implemented.
-        return minefields_[index.row()][index.column()];
-    }
+//    if (role == Qt::DisplayRole)
+//    {
+//        // minefields_.get(x,y) needs to be implemented.
+//        // return minefields_.at(index.row(),index.column());
+//    }
 //    if (index.row() < 0 || index.row() >= minefields_.count())
 //        return QVariant();
 
-//    const Minefield &minefield = minefields_[index.row()];
+    ;
 
-//    if (role == HasMineRole)
-//    {
-//        return minefield.hasMine();
-//    }
-//    else if (role == IsVisitedRole)
-//    {
-//        return minefield.isVisited();
-//    }
-//    else if (role == IsLockedRole)
-//    {
-//        return minefield.isLocked();
-//    }
-//    else if (role == NoOfNeighbouringMinesRole)
-//    {
-//        return minefield.noOfNeighbouringMines();
-//    }
+    if (role == HasMineRole)
+    {
+        return minefields_.at(index.row(),index.column()).hasMine();
+    }
+    else if (role == IsVisitedRole)
+    {
+        return minefields_.at(index.row(),index.column()).isVisited();
+    }
+    else if (role == IsLockedRole)
+    {
+        return minefields_.at(index.row(),index.column()).isLocked();
+    }
+    else if (role == NoOfNeighbouringMinesRole)
+    {
+        return minefields_.at(index.row(),index.column()).noOfNeighbouringMines();
+    }
     return QVariant();
 }
 

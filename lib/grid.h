@@ -13,7 +13,8 @@ namespace Grid {
         Grid();
         Grid(int rows, int cols);
 
-        // void add(const T &value);
+        T at(const int rows, const int cols) const;
+        T& operator=(const T &other);
         int size() const;
         int columnSize() const;
         int rowSize() const;
@@ -24,10 +25,11 @@ namespace Grid {
 
     };
 
-//    void add(const T &value)
-//    {
 
-//    }
+    template <typename T> T& Grid<T>::operator=(const T &other)
+    {
+        return other;
+    }
 
 
     template <typename T> Grid<T>::Grid(int rows, int cols)
@@ -36,7 +38,18 @@ namespace Grid {
         {
             for (int j = 0; j < cols; j++)
             {
-               rows_.at(i).at(j) = new T;
+               rows_.at(i).at(j) = T();
+            }
+        }
+    }
+
+    template <typename T> T Grid<T>::at(const int rows, const int cols) const
+    {
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+               return rows_.at(i).at(j);
             }
         }
     }
