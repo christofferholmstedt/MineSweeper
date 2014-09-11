@@ -2,6 +2,8 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 
+#include <ctime>
+
 #include "minefield.h"
 #include "minefieldmodel.h"
 
@@ -12,29 +14,15 @@ int main(int argc, char *argv[])
     int noOfMinefields = 144;
     QGuiApplication app(argc, argv);
 
+    srand(time(NULL));
+    // MinefieldModel model;
     MinefieldModel model(&app, std::sqrt(noOfMinefields),std::sqrt(noOfMinefields));
-
-//    int i = 0;
-//    int randomNumber;
-//    bool hasMine;
-//    while (i < noOfMinefields)
-//    {
-//        randomNumber = rand() % 2;
-//        if (randomNumber == 0)
-//        {
-//            hasMine = false;
-//        }
-//        else
-//        {
-//            hasMine = true;
-//        }
-//        model.addMinefield(Minefield(hasMine));
-//        i++;
-//    }
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("minefieldModel", &model);
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+
+    // model.resize(std::sqrt(noOfMinefields),std::sqrt(noOfMinefields));
 
     return app.exec();
 }

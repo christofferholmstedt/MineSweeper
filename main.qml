@@ -10,10 +10,10 @@ Window {
     height: width
     color: "black"
 
-    minimumHeight: height
-    minimumWidth: width
-    maximumHeight: height
-    maximumWidth: width
+//    minimumHeight: height
+//    minimumWidth: width
+//    maximumHeight: height
+//    maximumWidth: width
 
     Grid {
         id: mineGrid

@@ -1,11 +1,21 @@
 #include "minefield.h"
+#include <cstdlib>
 
 Minefield::Minefield()
 {
-    hasMine_ = false;
     isLocked_ = false;
     isVisited_ = false;
     noOfNeighbouringMines_ = 0;
+
+    int randomNumber = std::rand() % 2;
+    if (randomNumber == 0)
+    {
+        hasMine_ = false;
+    }
+    else
+    {
+        hasMine_ = true;
+    }
 }
 
 void Minefield::setHasMine(const bool hasMine)
