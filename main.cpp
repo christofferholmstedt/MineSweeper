@@ -24,5 +24,6 @@ int main(int argc, char *argv[])
 
     // model.resize(std::sqrt(noOfMinefields),std::sqrt(noOfMinefields));
 
+    model.debugContent();
     return app.exec();
 }

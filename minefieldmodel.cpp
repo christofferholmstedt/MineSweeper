@@ -27,33 +27,35 @@ MinefieldModel::MinefieldModel(QObject *parent, const int rows, const int column
 int MinefieldModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-    std::cout << "rowCount: " << minefields_.size() << std::endl;
+    //std::cout << "rowCount: " << minefields_.size() << std::endl;
     return minefields_.size();
 }
 
 int MinefieldModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
-    std::cout << "columnCount: " << minefields_.at(0).size() << std::endl;
+   // std::cout << "columnCount: " << minefields_.at(0).size() << std::endl;
     return minefields_.at(0).size();
 }
 
 int MinefieldModel::noOfMinefields() const
 {
-    std::cout << "cols: " << columnCount() << " rows: " << rowCount() << std::endl;
-    return this->columnCount() * this->rowCount();
+    //std::cout << "cols: " << columnCount() << " rows: " << rowCount() << std::endl;
+    return columnCount() * rowCount();
 }
 
 void MinefieldModel::debugContent() const
 {
-    for (int i = 0; i < rowCount(); i++)
-    {
-        for (int j = 0; j < columnCount(); j++)
-        {
-            std::cout << minefields_.at(i).at(j).hasMine();
-        }
-         std::cout << std::endl;
-    }
+
+    std::cout << "columnCount: " << columnCount() << " rowCount: " << rowCount() << std::endl;
+//    for (int i = 0; i < rowCount(); i++)
+//    {
+//        for (int j = 0; j < columnCount(); j++)
+//        {
+//            std::cout << minefields_.at(i).at(j).hasMine();
+//        }
+//         std::cout << std::endl;
+//    }
 }
 
 QVariant MinefieldModel::data(const QModelIndex &index, int role) const
