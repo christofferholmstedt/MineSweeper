@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 
     srand(time(NULL));
     // MinefieldModel model;
-    MinefieldModel model(&app, std::sqrt(noOfMinefields),std::sqrt(noOfMinefields));
+    MinefieldModel model(std::sqrt(noOfMinefields),std::sqrt(noOfMinefields));
 
     QQmlApplicationEngine engine;
     engine.rootContext()->setContextProperty("minefieldModel", &model);

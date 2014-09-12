@@ -11,7 +11,8 @@ class MinefieldModel : public QAbstractTableModel
     Q_PROPERTY(int noOfMinefields READ noOfMinefields NOTIFY noOfMinefieldsChanged)
 
 public:
-    explicit MinefieldModel(QObject *parent = 0, const int rows = 3, const int columns = 3);
+    explicit MinefieldModel(const int rows, const int columns);
+    // explicit MinefieldModel(QObject *parent = 0, const int rows = 3, const int columns = 3);
 
     enum MinefieldRoles {
         HasMineRole = Qt::UserRole + 1,

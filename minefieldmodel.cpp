@@ -1,9 +1,10 @@
 #include "minefieldmodel.h"
 #include <iostream>
 
-MinefieldModel::MinefieldModel(QObject *parent, const int rows, const int columns) :
-    QAbstractTableModel(parent)
+MinefieldModel::MinefieldModel(const int rows, const int columns) :
+    QAbstractTableModel()
 {
+    beginResetModel();
     for (int i = 0; i < rows; i++)
     {
         std::vector<Minefield> tempVec;
@@ -15,6 +16,7 @@ MinefieldModel::MinefieldModel(QObject *parent, const int rows, const int column
         }
         this->minefields_.push_back(tempVec);
     }
+    endResetModel();
 }
 //void MinefieldModel::addMinefield(const std::vector<Minefield> &minefields)
 //{
@@ -67,11 +69,11 @@ QVariant MinefieldModel::data(const QModelIndex &index, int role) const
 //        return QVariant();
 
 
-    std::cout << "x: " << index.row() << " y: " << index.column() << std::endl;
+    std::cout << "x: " << index.column() << " y: " << index.row() << std::endl;
 
     if (role == HasMineRole)
     {
-        return minefields_[index.row()][index.column()].hasMine();
+        return minefields_[index.column()][index.row()].hasMine();
     }
     else if (role == IsVisitedRole)
     {
