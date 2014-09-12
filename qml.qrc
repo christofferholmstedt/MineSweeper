@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Mine.qml</file>
-        <file>ContactModel.qml</file>
+        <file>Square.qml</file>
     </qresource>
 </RCC>

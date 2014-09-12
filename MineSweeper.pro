@@ -2,9 +2,7 @@ TEMPLATE = app
 
 QT += qml quick
 
-SOURCES += main.cpp \
-    minefield.cpp \
-    minefieldmodel.cpp
+SOURCES += main.cpp
 
 RESOURCES += qml.qrc
 
@@ -18,6 +16,7 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    minefield.h \
-    minefieldmodel.h \
     lib/grid.h
+
+OTHER_FILES += \
+    dummydata/boardModel.qml
