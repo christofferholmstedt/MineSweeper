@@ -19,8 +19,3 @@ void Square::setNumber(const int number)
 {
     number_ = number;
 }
-
-//Square Square::clone()
-//{
-
-//}

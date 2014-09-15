@@ -10,11 +10,8 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    // TODO: Create Square
-    Square square_ = Square(2);
-
     // TODO: Create Board
-    Board board_ = Board(square_, 5, 5);
+    Board board_ = Board(5, 5);
 
     // TODO: Create BoardModel
 
