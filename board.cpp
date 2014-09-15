@@ -2,20 +2,25 @@
 
 Board::Board(const int rows, const int columns)
 {
-    board_.resize(rows, columns);
+    grid_.resize(rows, columns);
 }
 
 int Board::size() const
 {
-    return board_.size();
+    return grid_.size();
 }
 
 int Board::rowSize() const
 {
-    return board_.rowSize();
+    return grid_.rowSize();
 }
 
 int Board::columnSize() const
 {
-    return board_.columnSize();
+    return grid_.columnSize();
+}
+
+Square Board::getSquare(const int row, const int column)
+{
+    return grid_.getSquare(row, column);
 }
