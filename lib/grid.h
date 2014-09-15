@@ -1,6 +1,8 @@
 #ifndef GRID_H
 #define GRID_H
 
+#include <vector>
+
 // Some notes
 // Using int instead of size_t. This is so type conversion/cast is not
 // necessary when using together with QAbstract(Item|List|Table)Model in Qt 5.
