@@ -10,15 +10,12 @@
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-
-    // TODO: Create Board
-    Board board = Board(5, 5);
-
-    // TODO: Create BoardModel
-    BoardModel boardModel = BoardModel(&board);
-
     QQmlApplicationEngine engine;
+
+    Board board = Board(10, 10);
+    BoardModel boardModel = BoardModel(&board);
     engine.rootContext()->setContextProperty("boardModel", &boardModel);
+
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     return app.exec();

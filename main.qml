@@ -5,8 +5,10 @@ Window {
     id: root
     property int squareWidthAndHeight: 25
     visible: true
-    height: (boardModel.rowCount * squareWidthAndHeight) + (boardModel.rowCount - 1)
-    width: (boardModel.columnCount * squareWidthAndHeight) + (boardModel.columnCount - 1)
+    height: (boardModel.rowCount * squareWidthAndHeight) +
+            ((boardModel.rowCount * boardGrid.spacing) - 1)
+    width: (boardModel.columnCount * squareWidthAndHeight) +
+           ((boardModel.columnCount * boardGrid.spacing) - 1)
     color: "black"
 
     minimumHeight: height
@@ -33,11 +35,6 @@ Window {
                     width: squareWidthAndHeight
             }
         }
-    }
-
-    function qmlDebug(a)
-    {
-        console.log("a is: ", a);
     }
 }
 

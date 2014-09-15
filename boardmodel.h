@@ -1,7 +1,7 @@
 #ifndef BOARDMODEL_H
 #define BOARDMODEL_H
 
-#include <QAbstractItemModel>
+#include <QAbstractTableModel>
 #include "board.h"
 
 class BoardModel : public QAbstractTableModel
@@ -19,7 +19,7 @@ public:
     int columnCount(const QModelIndex &parent = QModelIndex()) const;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
-    enum MinefieldRoles {
+    enum BoardModelRoles {
         Number = Qt::UserRole + 1
     };
 

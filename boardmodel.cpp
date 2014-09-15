@@ -27,7 +27,6 @@ QVariant BoardModel::data(const QModelIndex &index, int role) const
     if (role == Qt::DisplayRole)
         return QVariant();
 
-
     if (role == Number)
     {
         return board_->getSquare(index.row(), index.column())->getSquareNumber();
