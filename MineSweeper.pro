@@ -20,7 +20,6 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    lib/grid.h \
     square.h \
     board.h \
     gridofsquares.h \
