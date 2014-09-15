@@ -1,19 +1,21 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QDebug>
+
+#include "square.h"
+#include "board.h"
+#include "boardmodel.h"
 
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
-
-    // TODO: Create Square
-
-    // TODO: Create Board
-
-    // TODO: Create BoardModel
-
     QQmlApplicationEngine engine;
-    // engine.rootContext()->setContextProperty("BoardModel", &boardModel);
+
+    Board board = Board(10, 10);
+    BoardModel boardModel = BoardModel(&board);
+    engine.rootContext()->setContextProperty("boardModel", &boardModel);
+
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     return app.exec();

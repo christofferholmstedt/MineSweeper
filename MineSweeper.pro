@@ -2,7 +2,11 @@ TEMPLATE = app
 
 QT += qml quick
 
-SOURCES += main.cpp
+SOURCES += main.cpp \
+    square.cpp \
+    board.cpp \
+    gridofsquares.cpp \
+    boardmodel.cpp
 
 RESOURCES += qml.qrc
 
@@ -16,7 +20,10 @@ QML_IMPORT_PATH =
 include(deployment.pri)
 
 HEADERS += \
-    lib/grid.h
+    square.h \
+    board.h \
+    gridofsquares.h \
+    boardmodel.h
 
 OTHER_FILES += \
     dummydata/boardModel.qml
