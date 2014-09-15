@@ -5,14 +5,14 @@ class Square
 {
 public:
     Square();
-    Square(const int number);
+    Square(const int squareNumber);
 
-    int getNumber() const;
-    void setNumber(const int number);
+    int getSquareNumber() const;
+    void setSquareNumber(const int squareNumber);
 //    Square clone();
 
 private:
-    int number_;
+    int squareNumber_;
 };
 
 #endif // SQUARE_H

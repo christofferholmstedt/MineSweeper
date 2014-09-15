@@ -5,7 +5,8 @@ QT += qml quick
 SOURCES += main.cpp \
     square.cpp \
     board.cpp \
-    gridofsquares.cpp
+    gridofsquares.cpp \
+    boardmodel.cpp
 
 RESOURCES += qml.qrc
 
@@ -22,7 +23,8 @@ HEADERS += \
     lib/grid.h \
     square.h \
     board.h \
-    gridofsquares.h
+    gridofsquares.h \
+    boardmodel.h
 
 OTHER_FILES += \
     dummydata/boardModel.qml

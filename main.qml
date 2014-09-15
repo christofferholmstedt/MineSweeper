@@ -23,7 +23,7 @@ Window {
             delegate:
                 Square {
                     id: square
-                    text: name
+                    text: number
                     height: squareWidthAndHeight
                     width: squareWidthAndHeight
             }

@@ -2,20 +2,20 @@
 
 Square::Square()
 {
-    number_ = 42;
+    squareNumber_ = 42;
 }
 
-Square::Square(const int number) :
-    number_(number)
+Square::Square(const int squareNumber) :
+    squareNumber_(squareNumber)
 {
 }
 
-int Square::getNumber() const
+int Square::getSquareNumber() const
 {
-    return number_;
+    return squareNumber_;
 }
 
-void Square::setNumber(const int number)
+void Square::setSquareNumber(const int squareNumber)
 {
-    number_ = number;
+    squareNumber_ = squareNumber;
 }
