@@ -14,7 +14,7 @@ public:
     int rowSize() const;
     int columnSize() const;
     void resize(const int rows, const int columns);
-    Square getSquare(const int row, const int column) const;
+    Square * getSquare(const int row, const int column);
 
 private:
     std::vector<std::vector<Square> > rows_;

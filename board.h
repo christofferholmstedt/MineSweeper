@@ -12,7 +12,7 @@ public:
     int size() const;
     int rowSize() const;
     int columnSize() const;
-    Square getSquare(const int row, const int column);
+    Square * getSquare(const int row, const int column);
 
 private:
     Square square_;

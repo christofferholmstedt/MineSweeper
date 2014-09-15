@@ -5,6 +5,11 @@ BoardModel::BoardModel(Board * board) :
 {
 }
 
+int BoardModel::squareCount() const
+{
+    return board_->size();
+}
+
 int BoardModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
@@ -22,10 +27,12 @@ QVariant BoardModel::data(const QModelIndex &index, int role) const
     if (role == Qt::DisplayRole)
         return QVariant();
 
+
     if (role == Number)
     {
-        return board_->getSquare(index.row(), index.column()).getSquareNumber();
+        return board_->getSquare(index.row(), index.column())->getSquareNumber();
     }
+    return QVariant();
 }
 
 QHash<int, QByteArray> BoardModel::roleNames() const

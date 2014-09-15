@@ -9,7 +9,6 @@ public:
 
     int getSquareNumber() const;
     void setSquareNumber(const int squareNumber);
-//    Square clone();
 
 private:
     int squareNumber_;

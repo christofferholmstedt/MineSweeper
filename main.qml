@@ -5,15 +5,20 @@ Window {
     id: root
     property int squareWidthAndHeight: 25
     visible: true
-    height: 500
-    width: 500
+    height: (boardModel.rowCount * squareWidthAndHeight) + (boardModel.rowCount - 1)
+    width: (boardModel.columnCount * squareWidthAndHeight) + (boardModel.columnCount - 1)
     color: "black"
+
+    minimumHeight: height
+    minimumWidth: width
+    maximumHeight: height
+    maximumWidth: width
 
     Grid {
         id: boardGrid
         anchors.fill: parent
 
-        columns: Math.sqrt(boardModel.count)
+        columns: boardModel.columnCount
         spacing: 1
 
         Repeater {
@@ -29,4 +34,10 @@ Window {
             }
         }
     }
+
+    function qmlDebug(a)
+    {
+        console.log("a is: ", a);
+    }
 }
+
