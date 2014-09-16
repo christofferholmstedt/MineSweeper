@@ -20,7 +20,8 @@ public:
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const;
 
     enum BoardModelRoles {
-        SquareIndex = Qt::UserRole + 1
+        SquareIndex = Qt::UserRole + 1,
+        HasMine
     };
 
 signals:
