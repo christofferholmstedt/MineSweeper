@@ -9,7 +9,7 @@ Board::Board(const int rows, const int columns)
     {
        for (int j = 0; j < columns; j++)
        {
-          grid_.getSquare(i, j)->setSquareNumber(counter);
+          grid_.getSquare(i, j)->setSquareIndex(counter);
           counter++;
        }
     }

@@ -8,7 +8,7 @@ ListModel {
      Component.onCompleted: {
         for (var i = 0; i < (rowCount * columnCount); i++)
         {
-            append({number: i})
+            append({squareIndex: i})
         }
     }
 }

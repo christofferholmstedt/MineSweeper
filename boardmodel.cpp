@@ -44,7 +44,7 @@ int BoardModel::columnCount(const QModelIndex &parent) const
 QHash<int, QByteArray> BoardModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
-        roles[Number] = "number";
+        roles[SquareIndex] = "squareIndex";
     return roles;
 }
 
@@ -59,9 +59,9 @@ QVariant BoardModel::data(const QModelIndex &index, int role) const
     if (role == Qt::DisplayRole)
         return QVariant();
 
-    if (role == Number)
+    if (role == SquareIndex)
     {
-        return board_->getSquare(indexToRow(index.row()),indexToColumn(index.row()))->getSquareNumber();
+        return board_->getSquare(indexToRow(index.row()),indexToColumn(index.row()))->getSquareIndex();
     }
     return QVariant();
 }

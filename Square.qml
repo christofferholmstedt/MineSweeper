@@ -15,10 +15,6 @@ Rectangle {
         y: 0
         width: parent.width
         height: parent.height
-
-        onClicked: {
-            console.log("Square number: " + index + " was pressed.")
-        }
     }
 
     Text {
