@@ -2,6 +2,11 @@
 
 Board::Board(const int rows, const int columns)
 {
+    resize(rows, columns);
+}
+
+void Board::resize(const int rows, const int columns)
+{
     grid_.resize(rows, columns);
 
     int counter = 0;

@@ -2,7 +2,7 @@
 
 Square::Square()
 {
-    squareIndex_ = 42;
+    squareIndex_ = -1;
 }
 
 Square::Square(const int squareIndex) :
