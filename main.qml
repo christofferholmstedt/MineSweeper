@@ -16,6 +16,7 @@ Window {
            ((boardModel.columnCount * boardGrid.spacing) - 1)
     color: "black"
 
+
     minimumHeight: height
     minimumWidth: width
     maximumHeight: height
@@ -38,6 +39,7 @@ Window {
                     text: isVisited
                     height: squareWidthAndHeight
                     width: squareWidthAndHeight
+
             }
         }
     }

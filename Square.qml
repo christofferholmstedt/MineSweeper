@@ -8,6 +8,7 @@ Rectangle {
 
     property string text
     signal clicked
+    signal isVisitedSignal(int index, bool value)
 
     MouseArea {
         id: squareMouseArea
@@ -15,6 +16,12 @@ Rectangle {
         y: 0
         width: parent.width
         height: parent.height
+
+// This is only QML how do I call CPP model instead?
+        onClicked: {
+            //squareText.text =  "true";
+            root.isVisitedSignal(index, true);
+        }
     }
 
     Text {

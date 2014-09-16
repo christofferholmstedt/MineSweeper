@@ -76,6 +76,21 @@ QVariant BoardModel::data(const QModelIndex &index, int role) const
     return QVariant();
 }
 
+/***********************************************
+ * Public slots
+ ***********************************************/
+void BoardModel::isVisitedSlot(const int index, const bool value)
+{
+    qDebug() << "BoardModel::setIsVisited (index):" << index;
+    board_->getSquare(indexToRow(index),indexToColumn(index))->setIsVisited(value);
+    // dataChanged(index,index);
+}
+
+
+/***********************************************
+ * Private helpers below this comment
+ ***********************************************/
+
 /**
  * @brief BoardModel::indexToRow
  * @param index

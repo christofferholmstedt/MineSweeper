@@ -31,6 +31,7 @@ signals:
     void rowCountChanged();
 
 public slots:
+    void isVisitedSlot(const int index, const bool value);
 
 protected:
      QHash<int, QByteArray> roleNames() const;
