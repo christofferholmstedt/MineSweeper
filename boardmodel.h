@@ -1,10 +1,10 @@
 #ifndef BOARDMODEL_H
 #define BOARDMODEL_H
 
-#include <QAbstractTableModel>
+#include <QAbstractListModel>
 #include "board.h"
 
-class BoardModel : public QAbstractTableModel
+class BoardModel : public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(int squareCount READ squareCount NOTIFY squareCountChanged())
@@ -35,6 +35,9 @@ protected:
 
 private:
     Board * board_;
+
+    int indexToRow(const int index) const;
+    int indexToColumn(const int index) const;
 };
 
 #endif // BOARDMODEL_H

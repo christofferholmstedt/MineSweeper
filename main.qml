@@ -5,8 +5,13 @@ Window {
     id: root
     property int squareWidthAndHeight: 25
     visible: true
-    height: (boardModel.rowCount * squareWidthAndHeight) +
-            ((boardModel.rowCount * boardGrid.spacing) - 1)
+
+    // boardModel.rowCount gives the total number of items in
+    // underlying data structure therefore columnCount is used
+    // instead and the assumption is made that the board is
+    // a square and not a rectangle.
+    height: (boardModel.columnCount * squareWidthAndHeight) +
+            ((boardModel.columnCount * boardGrid.spacing) - 1)
     width: (boardModel.columnCount * squareWidthAndHeight) +
            ((boardModel.columnCount * boardGrid.spacing) - 1)
     color: "black"
