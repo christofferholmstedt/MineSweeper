@@ -35,7 +35,7 @@ Window {
             delegate:
                 Square {
                     id: square
-                    text: hasMine
+                    text: isVisited
                     height: squareWidthAndHeight
                     width: squareWidthAndHeight
             }

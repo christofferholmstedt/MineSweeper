@@ -5,6 +5,7 @@
 Square::Square()
 {
     squareIndex_ = -1;
+    isVisited_ = false;
 
     int pseudoRandomValue = rand() % 2;
     if (pseudoRandomValue == 0)
@@ -35,4 +36,14 @@ void Square::setSquareIndex(const int squareIndex)
 bool Square::getHasMine() const
 {
     return hasMine_;
+}
+
+bool Square::getIsVisited() const
+{
+    return isVisited_;
+}
+
+void Square::setIsVisited(const bool value)
+{
+    isVisited_ = value;
 }

@@ -21,7 +21,8 @@ public:
 
     enum BoardModelRoles {
         SquareIndex = Qt::UserRole + 1,
-        HasMine
+        HasMine,
+        IsVisited
     };
 
 signals:

@@ -46,6 +46,7 @@ QHash<int, QByteArray> BoardModel::roleNames() const
     QHash<int, QByteArray> roles;
         roles[SquareIndex] = "squareIndex";
         roles[HasMine] = "hasMine";
+        roles[IsVisited] = "isVisited";
     return roles;
 }
 
@@ -67,6 +68,10 @@ QVariant BoardModel::data(const QModelIndex &index, int role) const
     else if (role == HasMine)
     {
         return board_->getSquare(indexToRow(index.row()),indexToColumn(index.row()))->getHasMine();
+    }
+    else if (role == IsVisited)
+    {
+        return board_->getSquare(indexToRow(index.row()),indexToColumn(index.row()))->getIsVisited();
     }
     return QVariant();
 }
