@@ -5,6 +5,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QtWidgets/QWidget>
+#include <QQmlComponent>
 #include <QDebug>
 
 #include "square.h"
@@ -27,11 +28,22 @@ int main(int argc, char *argv[])
 
     QObject *item = engine.rootObjects().at(0);
 
-    QList<QObject *> rect = item->findChildren<QObject *>("root");
-//    if (rect)
-//        rect->setProperty("color", "red");
+    // This is not a viable solution apparently going down in the hierarchy too deep.
+    // Another problem is that I can't get access to the delegates, they are not listed as children.
+    // Use Q_INVOKABLES instead
+    QQmlComponent * component = item->findChild<QQmlComponent *>();
+    qDebug() << component;
 
-    // qDebug() << rect;
+    QList<QObject *> rectangles = component->findChildren<QObject *>();
+    qDebug() << rectangles;
+
+    for (auto &s: rectangles)
+    {
+        qDebug() << s->objectName();
+        s->setProperty("color", "black");
+    }
+
+        // qDebug() << rect;
     // QList<QWidget *> widgetList = item->findChildren<QWidget *>();
 
     // The signal is available in the children "square" not in the root element

@@ -24,6 +24,7 @@ Window {
 
     Grid {
         id: boardGrid
+        objectName: "boardGrid"
         anchors.fill: parent
 
         columns: boardModel.columnCount
@@ -31,11 +32,14 @@ Window {
 
         Repeater {
             id: boardGridRepeater
+            objectName: "boardGridRepeater"
             model: boardModel
 
             delegate:
+
                 Square {
                     id: square
+                    objectName: "square"
                     text: isVisited
                     height: squareWidthAndHeight
                     width: squareWidthAndHeight
