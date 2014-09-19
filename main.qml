@@ -17,6 +17,8 @@ Window {
     color: "black"
 
 
+    signal squareClicked(int index, bool leftMouseButton)
+
     minimumHeight: height
     minimumWidth: width
     maximumHeight: height
@@ -36,13 +38,15 @@ Window {
             model: boardModel
 
             delegate:
-
                 Square {
                     id: square
                     objectName: "square"
-                    text: isVisited
+                    text: isLocked
                     height: squareWidthAndHeight
                     width: squareWidthAndHeight
+                    Component.onCompleted: {
+                        squareClickedSignal.connect(root.squareClicked)
+                    }
 
             }
         }

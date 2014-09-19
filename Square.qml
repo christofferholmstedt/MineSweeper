@@ -7,8 +7,7 @@ Rectangle {
     color: "#798086"
 
     property string text
-    signal clicked
-    signal isVisitedSignal(int index, bool value)
+    signal squareClickedSignal(int index, bool leftMouseButton)
 
     MouseArea {
         id: squareMouseArea
@@ -17,10 +16,22 @@ Rectangle {
         width: parent.width
         height: parent.height
 
-// This is only QML how do I call CPP model instead?
+        acceptedButtons: Qt.LeftButton | Qt.RightButton
+
         onClicked: {
-            //squareText.text =  "true";
-            root.isVisitedSignal(index, true);
+            if (mouse.button == Qt.LeftButton)
+            {
+                root.squareClickedSignal(index, true);
+            }
+            else if (mouse.button == Qt.RightButton)
+            {
+                root.squareClickedSignal(index, false);
+            }
+            else
+            {
+                console.log("Error how did you click on this square?");
+            }
+
         }
     }
 
