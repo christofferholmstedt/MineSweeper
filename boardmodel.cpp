@@ -47,6 +47,7 @@ QHash<int, QByteArray> BoardModel::roleNames() const
         roles[SquareIndex] = "squareIndex";
         roles[HasMine] = "hasMine";
         roles[IsVisited] = "isVisited";
+        roles[IsLocked] = "isLocked";
     return roles;
 }
 
@@ -73,17 +74,49 @@ QVariant BoardModel::data(const QModelIndex &index, int role) const
     {
         return board_->getSquare(indexToRow(index.row()),indexToColumn(index.row()))->getIsVisited();
     }
+    else if (role == IsLocked)
+    {
+        return board_->getSquare(indexToRow(index.row()),indexToColumn(index.row()))->getIsLocked();
+    }
     return QVariant();
 }
 
 /***********************************************
  * Public slots
  ***********************************************/
-void BoardModel::isVisitedSlot(const int index, const bool value)
+void BoardModel::squareClickedSlot(const int index, const bool leftMouseButton)
 {
-    qDebug() << "BoardModel::setIsVisited (index):" << index;
-    board_->getSquare(indexToRow(index),indexToColumn(index))->setIsVisited(value);
-    // dataChanged(index,index);
+    if (leftMouseButton)
+    {
+        // Left Mouse Button
+        if (!board_->getSquare(indexToRow(index),indexToColumn(index))->getIsVisited() &&
+            !board_->getSquare(indexToRow(index),indexToColumn(index))->getIsLocked())
+        {
+            beginResetModel();
+            board_->getSquare(indexToRow(index),indexToColumn(index))->setIsVisited(true);
+            endResetModel();
+        }
+    }
+    else
+    {
+        // Right Mouse Button
+
+        if (board_->getSquare(indexToRow(index),indexToColumn(index))->getIsLocked() &&
+            !board_->getSquare(indexToRow(index),indexToColumn(index))->getIsVisited())
+        {
+            beginResetModel();
+            board_->getSquare(indexToRow(index),indexToColumn(index))->setIsLocked(false);
+            endResetModel();
+        }
+        else if (!board_->getSquare(indexToRow(index),indexToColumn(index))->getIsLocked() &&
+                 !board_->getSquare(indexToRow(index),indexToColumn(index))->getIsVisited())
+        {
+            beginResetModel();
+            board_->getSquare(indexToRow(index),indexToColumn(index))->setIsLocked(true);
+            endResetModel();
+        }
+    }
+
 }
 
 

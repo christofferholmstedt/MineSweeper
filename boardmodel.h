@@ -22,7 +22,8 @@ public:
     enum BoardModelRoles {
         SquareIndex = Qt::UserRole + 1,
         HasMine,
-        IsVisited
+        IsVisited,
+        IsLocked
     };
 
 signals:
@@ -31,7 +32,7 @@ signals:
     void rowCountChanged();
 
 public slots:
-    void isVisitedSlot(const int index, const bool value);
+    void squareClickedSlot(const int index, const bool leftMouseButton);
 
 protected:
      QHash<int, QByteArray> roleNames() const;

@@ -47,3 +47,13 @@ void Square::setIsVisited(const bool value)
 {
     isVisited_ = value;
 }
+
+bool Square::getIsLocked() const
+{
+    return isLocked_;
+}
+
+void Square::setIsLocked(const bool value)
+{
+    isLocked_ = value;
+}

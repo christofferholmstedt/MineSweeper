@@ -10,14 +10,17 @@ public:
     int getSquareIndex() const;
     bool getHasMine() const;
     bool getIsVisited() const;
+    bool getIsLocked() const;
 
     void setIsVisited(const bool value);
     void setSquareIndex(const int squareIndex);
+    void setIsLocked(const bool value);
 
 private:
     int squareIndex_;
     bool hasMine_;
     bool isVisited_;
+    bool isLocked_;
 
 };
 
