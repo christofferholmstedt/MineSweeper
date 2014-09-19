@@ -47,6 +47,7 @@ Window {
 
                     Component.onCompleted: {
                         squareClickedSignal.connect(root.squareClicked);
+                        noOfMinesSquare = noOfMines;
 
                         if (isVisited)
                         {

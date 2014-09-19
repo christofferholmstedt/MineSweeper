@@ -6,7 +6,7 @@ Rectangle {
     height: 50
     color: "#798086"
 
-    property int noOfMines
+    property int noOfMinesSquare
     property string text
     signal squareClickedSignal(int index, bool leftMouseButton)
 
@@ -80,7 +80,7 @@ Rectangle {
 
             PropertyChanges {
                 target: root
-                text: root.noOfMines
+                text: root.noOfMinesSquare
                 color: "#08ae1a"
             }
         }

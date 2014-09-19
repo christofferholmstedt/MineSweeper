@@ -1,12 +1,14 @@
 #include <cstdlib>
 
 #include "square.h"
+#include <QDebug>
 
 Square::Square()
 {
     squareIndex_ = -1;
     isVisited_ = false;
     isLocked_ = false;
+    noOfMines_ = 0;
 
     int pseudoRandomValue = rand() % 2;
     if (pseudoRandomValue == 0)
@@ -57,4 +59,19 @@ bool Square::getIsLocked() const
 void Square::setIsLocked(const bool value)
 {
     isLocked_ = value;
+}
+
+int Square::getNoOfMines() const
+{
+    return noOfMines_;
+}
+
+void Square::setNoOfMines(const int noOfMines)
+{
+    noOfMines_ = noOfMines;
+}
+
+void Square::addOneMine()
+{
+    noOfMines_ = noOfMines_ + 1;
 }

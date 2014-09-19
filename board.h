@@ -18,6 +18,8 @@ public:
 private:
     Square square_;
 
+    void updateNoOfMines();
+
     GridOfSquares grid_;
 };
 

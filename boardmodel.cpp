@@ -48,6 +48,7 @@ QHash<int, QByteArray> BoardModel::roleNames() const
         roles[HasMine] = "hasMine";
         roles[IsVisited] = "isVisited";
         roles[IsLocked] = "isLocked";
+        roles[NoOfMines] = "noOfMines";
     return roles;
 }
 
@@ -77,6 +78,10 @@ QVariant BoardModel::data(const QModelIndex &index, int role) const
     else if (role == IsLocked)
     {
         return board_->getSquare(indexToRow(index.row()),indexToColumn(index.row()))->getIsLocked();
+    }
+    else if (role == NoOfMines)
+    {
+        return board_->getSquare(indexToRow(index.row()),indexToColumn(index.row()))->getNoOfMines();
     }
     return QVariant();
 }

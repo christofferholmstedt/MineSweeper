@@ -23,7 +23,8 @@ public:
         SquareIndex = Qt::UserRole + 1,
         HasMine,
         IsVisited,
-        IsLocked
+        IsLocked,
+        NoOfMines
     };
 
 signals:
