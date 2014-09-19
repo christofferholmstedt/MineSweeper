@@ -1,5 +1,6 @@
 import QtQuick 2.3
 import QtQuick.Window 2.1
+import QtQml 2.2
 
 Window {
     id: root
@@ -41,11 +42,27 @@ Window {
                 Square {
                     id: square
                     objectName: "square"
-                    text: isLocked
                     height: squareWidthAndHeight
                     width: squareWidthAndHeight
+
                     Component.onCompleted: {
-                        squareClickedSignal.connect(root.squareClicked)
+                        squareClickedSignal.connect(root.squareClicked);
+
+                        if (isVisited)
+                        {
+                            if (hasMine)
+                            {
+                                state = "hasMine";
+                            }
+                            else
+                            {
+                                state = "hasNoMine";
+                            }
+                        }
+                        else if (isLocked)
+                        {
+                            state = "locked";
+                        }
                     }
 
             }

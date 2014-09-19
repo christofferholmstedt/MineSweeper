@@ -6,6 +6,7 @@ Square::Square()
 {
     squareIndex_ = -1;
     isVisited_ = false;
+    isLocked_ = false;
 
     int pseudoRandomValue = rand() % 2;
     if (pseudoRandomValue == 0)

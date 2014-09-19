@@ -2,10 +2,11 @@ import QtQuick 2.3
 
 Rectangle {
     id: root
-    width: 25
-    height: 25
+    width: 50
+    height: 50
     color: "#798086"
 
+    property int noOfMines
     property string text
     signal squareClickedSignal(int index, bool leftMouseButton)
 
@@ -44,4 +45,44 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: root.height / 2
     }
+
+    states: [
+        State {
+            name: "base"
+
+            PropertyChanges {
+                target: root
+                text: ""
+                color: "#798086"
+            }
+        },
+
+        State {
+            name: "locked"
+
+            PropertyChanges {
+                target: root
+                text: "L"
+                color: "#035aa6"
+            }
+        },
+        State {
+            name: "hasMine"
+
+            PropertyChanges {
+                target: root
+                text: "X"
+                color: "#a9032b"
+            }
+        },
+        State {
+            name: "hasNoMine"
+
+            PropertyChanges {
+                target: root
+                text: root.noOfMines
+                color: "#08ae1a"
+            }
+        }
+    ]
 }
