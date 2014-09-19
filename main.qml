@@ -1,5 +1,6 @@
 import QtQuick 2.3
 import QtQuick.Window 2.1
+import QtQml 2.2
 
 Window {
     id: root
@@ -16,6 +17,9 @@ Window {
            ((boardModel.columnCount * boardGrid.spacing) - 1)
     color: "black"
 
+
+    signal squareClicked(int index, bool leftMouseButton)
+
     minimumHeight: height
     minimumWidth: width
     maximumHeight: height
@@ -23,6 +27,7 @@ Window {
 
     Grid {
         id: boardGrid
+        objectName: "boardGrid"
         anchors.fill: parent
 
         columns: boardModel.columnCount
@@ -30,14 +35,37 @@ Window {
 
         Repeater {
             id: boardGridRepeater
+            objectName: "boardGridRepeater"
             model: boardModel
 
             delegate:
                 Square {
                     id: square
-                    text: number
+                    objectName: "square"
                     height: squareWidthAndHeight
                     width: squareWidthAndHeight
+
+                    Component.onCompleted: {
+                        squareClickedSignal.connect(root.squareClicked);
+                        noOfMinesSquare = noOfMines;
+
+                        if (isVisited)
+                        {
+                            if (hasMine)
+                            {
+                                state = "hasMine";
+                            }
+                            else
+                            {
+                                state = "hasNoMine";
+                            }
+                        }
+                        else if (isLocked)
+                        {
+                            state = "locked";
+                        }
+                    }
+
             }
         }
     }

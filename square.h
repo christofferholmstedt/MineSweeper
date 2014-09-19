@@ -5,13 +5,27 @@ class Square
 {
 public:
     Square();
-    Square(const int squareNumber);
+    Square(const int squareIndex);
 
-    int getSquareNumber() const;
-    void setSquareNumber(const int squareNumber);
+    int getSquareIndex() const;
+    int getNoOfMines() const;
+    bool getHasMine() const;
+    bool getIsVisited() const;
+    bool getIsLocked() const;
+
+    void setIsVisited(const bool value);
+    void setSquareIndex(const int squareIndex);
+    void setIsLocked(const bool value);
+    void setNoOfMines(const int noOfMines);
+    void addOneMine();
 
 private:
-    int squareNumber_;
+    int squareIndex_;
+    int noOfMines_;
+    bool hasMine_;
+    bool isVisited_;
+    bool isLocked_;
+
 };
 
 #endif // SQUARE_H

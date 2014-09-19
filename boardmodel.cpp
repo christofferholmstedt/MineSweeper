@@ -44,7 +44,11 @@ int BoardModel::columnCount(const QModelIndex &parent) const
 QHash<int, QByteArray> BoardModel::roleNames() const
 {
     QHash<int, QByteArray> roles;
-        roles[Number] = "number";
+        roles[SquareIndex] = "squareIndex";
+        roles[HasMine] = "hasMine";
+        roles[IsVisited] = "isVisited";
+        roles[IsLocked] = "isLocked";
+        roles[NoOfMines] = "noOfMines";
     return roles;
 }
 
@@ -59,12 +63,71 @@ QVariant BoardModel::data(const QModelIndex &index, int role) const
     if (role == Qt::DisplayRole)
         return QVariant();
 
-    if (role == Number)
+    if (role == SquareIndex)
     {
-        return board_->getSquare(indexToRow(index.row()),indexToColumn(index.row()))->getSquareNumber();
+        return board_->getSquare(indexToRow(index.row()),indexToColumn(index.row()))->getSquareIndex();
+    }
+    else if (role == HasMine)
+    {
+        return board_->getSquare(indexToRow(index.row()),indexToColumn(index.row()))->getHasMine();
+    }
+    else if (role == IsVisited)
+    {
+        return board_->getSquare(indexToRow(index.row()),indexToColumn(index.row()))->getIsVisited();
+    }
+    else if (role == IsLocked)
+    {
+        return board_->getSquare(indexToRow(index.row()),indexToColumn(index.row()))->getIsLocked();
+    }
+    else if (role == NoOfMines)
+    {
+        return board_->getSquare(indexToRow(index.row()),indexToColumn(index.row()))->getNoOfMines();
     }
     return QVariant();
 }
+
+/***********************************************
+ * Public slots
+ ***********************************************/
+void BoardModel::squareClickedSlot(const int index, const bool leftMouseButton)
+{
+    if (leftMouseButton)
+    {
+        // Left Mouse Button
+        if (!board_->getSquare(indexToRow(index),indexToColumn(index))->getIsVisited() &&
+            !board_->getSquare(indexToRow(index),indexToColumn(index))->getIsLocked())
+        {
+            beginResetModel();
+            board_->getSquare(indexToRow(index),indexToColumn(index))->setIsVisited(true);
+            endResetModel();
+        }
+    }
+    else
+    {
+        // Right Mouse Button
+
+        if (board_->getSquare(indexToRow(index),indexToColumn(index))->getIsLocked() &&
+            !board_->getSquare(indexToRow(index),indexToColumn(index))->getIsVisited())
+        {
+            beginResetModel();
+            board_->getSquare(indexToRow(index),indexToColumn(index))->setIsLocked(false);
+            endResetModel();
+        }
+        else if (!board_->getSquare(indexToRow(index),indexToColumn(index))->getIsLocked() &&
+                 !board_->getSquare(indexToRow(index),indexToColumn(index))->getIsVisited())
+        {
+            beginResetModel();
+            board_->getSquare(indexToRow(index),indexToColumn(index))->setIsLocked(true);
+            endResetModel();
+        }
+    }
+
+}
+
+
+/***********************************************
+ * Private helpers below this comment
+ ***********************************************/
 
 /**
  * @brief BoardModel::indexToRow
