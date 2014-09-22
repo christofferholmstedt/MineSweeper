@@ -1,22 +1,36 @@
 import QtQuick 2.0
 
 Rectangle {
+    id: root
     width: parent.width
     height: 50
     color: "grey"
 
-    BorderImage {
+    MouseArea {
+        anchors.fill: parent
+
+        onClicked: {
+            console.log("Pressed header.")
+        }
+    }
+
+    Image {
         id: menu
         source: "icons/menu.png"
 
-        width: 30
-        height: 30
+        width: 40
+        height: 40
 
-        border.right: 10
-        border.left: 10
-        border.top: 10
-        border.bottom: 10
+        anchors.right: parent.right
+        anchors.verticalCenter: parent.verticalCenter
 
-        anchors.rightMargin: parent.right
+        MouseArea {
+            anchors.fill: parent
+
+            onClicked: {
+                console.log("Pressed menu.")
+            }
+        }
     }
+
 }
