@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>Square.qml</file>
+        <file>Header.qml</file>
+        <file>icons/menu.png</file>
     </qresource>
 </RCC>

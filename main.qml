@@ -11,7 +11,8 @@ Window {
     // underlying data structure therefore columnCount is used
     // instead and the assumption is made that the board is
     // a square and not a rectangle.
-    height: (boardModel.columnCount * squareWidthAndHeight) +
+    height: header.height +
+            (boardModel.columnCount * squareWidthAndHeight) +
             ((boardModel.columnCount * boardGrid.spacing) - 1)
     width: (boardModel.columnCount * squareWidthAndHeight) +
            ((boardModel.columnCount * boardGrid.spacing) - 1)
@@ -25,47 +26,54 @@ Window {
     maximumHeight: height
     maximumWidth: width
 
-    Grid {
-        id: boardGrid
-        objectName: "boardGrid"
-        anchors.fill: parent
-
-        columns: boardModel.columnCount
+    Column {
         spacing: 1
 
-        Repeater {
-            id: boardGridRepeater
-            objectName: "boardGridRepeater"
-            model: boardModel
+        Header {
+            id: header
+        }
 
-            delegate:
-                Square {
-                    id: square
-                    objectName: "square"
-                    height: squareWidthAndHeight
-                    width: squareWidthAndHeight
+        Grid {
+            id: boardGrid
+            objectName: "boardGrid"
 
-                    Component.onCompleted: {
-                        squareClickedSignal.connect(root.squareClicked);
-                        noOfMinesSquare = noOfMines;
+            columns: boardModel.columnCount
+            spacing: 1
 
-                        if (isVisited)
-                        {
-                            if (hasMine)
+            Repeater {
+                id: boardGridRepeater
+                objectName: "boardGridRepeater"
+                model: boardModel
+
+                delegate:
+                    Square {
+                        id: square
+                        objectName: "square"
+                        height: squareWidthAndHeight
+                        width: squareWidthAndHeight
+
+                        Component.onCompleted: {
+                            squareClickedSignal.connect(root.squareClicked);
+                            noOfMinesSquare = noOfMines;
+
+                            if (isVisited)
                             {
-                                state = "hasMine";
+                                if (hasMine)
+                                {
+                                    state = "hasMine";
+                                }
+                                else
+                                {
+                                    state = "hasNoMine";
+                                }
                             }
-                            else
+                            else if (isLocked)
                             {
-                                state = "hasNoMine";
+                                state = "locked";
                             }
                         }
-                        else if (isLocked)
-                        {
-                            state = "locked";
-                        }
-                    }
 
+                }
             }
         }
     }
