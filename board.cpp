@@ -21,6 +21,12 @@ void Board::resize(const int rows, const int columns)
     }
 
     updateNoOfMines();
+    newGame();
+}
+
+void Board::newGame()
+{
+    isGameOver_ = false;
 }
 
 void Board::updateNoOfMines()
@@ -107,6 +113,16 @@ void Board::updateNoOfMines()
         }
     }
 
+}
+
+void Board::setIsGameOver(bool value)
+{
+    isGameOver_ = value;
+}
+
+bool Board::getIsGameOver() const
+{
+    return isGameOver_;
 }
 
 int Board::size() const

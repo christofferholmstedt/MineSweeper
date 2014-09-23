@@ -15,8 +15,13 @@ public:
     Square * getSquare(const int row, const int column);
     void resize(const int rows, const int columns);
 
+    bool getIsGameOver() const;
+    void setIsGameOver(bool value);
+    void newGame();
+
 private:
     Square square_;
+    bool isGameOver_;
 
     void updateNoOfMines();
 

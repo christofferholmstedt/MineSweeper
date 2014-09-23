@@ -15,6 +15,12 @@ int BoardModel::squareCount() const
     return board_->size();
 }
 
+
+int BoardModel::isGameOver() const
+{
+    return board_->getIsGameOver();
+}
+
 /**
  * @brief BoardModel::rowCount
  * @param parent = 0
@@ -91,14 +97,22 @@ QVariant BoardModel::data(const QModelIndex &index, int role) const
  ***********************************************/
 void BoardModel::squareClickedSlot(const int index, const bool leftMouseButton)
 {
+    qDebug() << isGameOver();
+
     if (leftMouseButton)
     {
         // Left Mouse Button
         if (!board_->getSquare(indexToRow(index),indexToColumn(index))->getIsVisited() &&
-            !board_->getSquare(indexToRow(index),indexToColumn(index))->getIsLocked())
+            !board_->getSquare(indexToRow(index),indexToColumn(index))->getIsLocked() &&
+            !isGameOver())
         {
             beginResetModel();
             board_->getSquare(indexToRow(index),indexToColumn(index))->setIsVisited(true);
+
+            if (board_->getSquare(indexToRow(index),indexToColumn(index))->getHasMine())
+            {
+                board_->setIsGameOver(true);
+            }
             endResetModel();
         }
     }
@@ -107,14 +121,16 @@ void BoardModel::squareClickedSlot(const int index, const bool leftMouseButton)
         // Right Mouse Button
 
         if (board_->getSquare(indexToRow(index),indexToColumn(index))->getIsLocked() &&
-            !board_->getSquare(indexToRow(index),indexToColumn(index))->getIsVisited())
+            !board_->getSquare(indexToRow(index),indexToColumn(index))->getIsVisited() &&
+            !isGameOver())
         {
             beginResetModel();
             board_->getSquare(indexToRow(index),indexToColumn(index))->setIsLocked(false);
             endResetModel();
         }
         else if (!board_->getSquare(indexToRow(index),indexToColumn(index))->getIsLocked() &&
-                 !board_->getSquare(indexToRow(index),indexToColumn(index))->getIsVisited())
+                 !board_->getSquare(indexToRow(index),indexToColumn(index))->getIsVisited() &&
+                 !isGameOver())
         {
             beginResetModel();
             board_->getSquare(indexToRow(index),indexToColumn(index))->setIsLocked(true);

@@ -6,6 +6,17 @@ Rectangle {
     height: 50
     color: "grey"
 
+    property string title: ""
+
+    Text  {
+        id: title
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.leftMargin: 5
+        text: parent.title
+        font.pointSize: 24
+    }
+
     MouseArea {
         anchors.fill: parent
 
@@ -28,9 +39,20 @@ Rectangle {
             anchors.fill: parent
 
             onClicked: {
-                console.log("Pressed restart.")
+                console.log("Pressed restart.");
+                root.state = "";
             }
         }
     }
 
+    states: [
+        State {
+            name: "gameOver"
+
+            PropertyChanges {
+                target: root
+                title: "Game Over"
+            }
+       }
+    ]
 }

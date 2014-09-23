@@ -56,6 +56,7 @@ Window {
                             squareClickedSignal.connect(root.squareClicked);
                             noOfMinesSquare = noOfMines;
 
+                            // Check if the clicked square has mine or is locked.
                             if (isVisited)
                             {
                                 if (hasMine)
@@ -71,9 +72,20 @@ Window {
                             {
                                 state = "locked";
                             }
+
+                            // Check if it's game over
+                            if (boardModel.isGameOver)
+                            {
+                                header.state = "gameOver";
+                            }
+                            else
+                            {
+                                header.state = "";
+                            }
                         }
 
-                }
+                    }
+
             }
         }
     }
