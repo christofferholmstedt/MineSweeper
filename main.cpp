@@ -31,5 +31,7 @@ int main(int argc, char *argv[])
     QObject::connect(mainQmlWindow, SIGNAL(squareClicked(int,bool)),
                      &boardModel, SLOT(squareClickedSlot(int,bool)));
 
+    QObject::connect(mainQmlWindow, SIGNAL(restartCommandGiven()),
+                     &boardModel, SLOT(restartClickedSlot()));
     return app.exec();
 }

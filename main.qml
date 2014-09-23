@@ -11,7 +11,8 @@ Window {
     // underlying data structure therefore columnCount is used
     // instead and the assumption is made that the board is
     // a square and not a rectangle.
-    height: (boardModel.columnCount * squareWidthAndHeight) +
+    height: header.height +
+            (boardModel.columnCount * squareWidthAndHeight) +
             ((boardModel.columnCount * boardGrid.spacing) - 1)
     width: (boardModel.columnCount * squareWidthAndHeight) +
            ((boardModel.columnCount * boardGrid.spacing) - 1)
@@ -19,51 +20,75 @@ Window {
 
 
     signal squareClicked(int index, bool leftMouseButton)
+    signal restartCommandGiven()
 
     minimumHeight: height
     minimumWidth: width
     maximumHeight: height
     maximumWidth: width
 
-    Grid {
-        id: boardGrid
-        objectName: "boardGrid"
-        anchors.fill: parent
-
-        columns: boardModel.columnCount
+    Column {
         spacing: 1
 
-        Repeater {
-            id: boardGridRepeater
-            objectName: "boardGridRepeater"
-            model: boardModel
+        Header {
+            id: header
 
-            delegate:
-                Square {
-                    id: square
-                    objectName: "square"
-                    height: squareWidthAndHeight
-                    width: squareWidthAndHeight
+            Component.onCompleted: {
+                restartButtonSignal.connect(root.restartCommandGiven);
+            }
+        }
 
-                    Component.onCompleted: {
-                        squareClickedSignal.connect(root.squareClicked);
-                        noOfMinesSquare = noOfMines;
+        Grid {
+            id: boardGrid
+            objectName: "boardGrid"
 
-                        if (isVisited)
-                        {
-                            if (hasMine)
+            columns: boardModel.columnCount
+            spacing: 1
+
+            Repeater {
+                id: boardGridRepeater
+                objectName: "boardGridRepeater"
+                model: boardModel
+
+                delegate:
+                    Square {
+                        id: square
+                        objectName: "square"
+                        height: squareWidthAndHeight
+                        width: squareWidthAndHeight
+
+                        Component.onCompleted: {
+                            squareClickedSignal.connect(root.squareClicked);
+                            noOfMinesSquare = noOfMines;
+
+                            // Check if the clicked square has mine or is locked.
+                            if (isVisited)
                             {
-                                state = "hasMine";
+                                if (hasMine)
+                                {
+                                    state = "hasMine";
+                                }
+                                else
+                                {
+                                    state = "hasNoMine";
+                                }
+                            }
+                            else if (isLocked)
+                            {
+                                state = "locked";
+                            }
+
+                            // Check if it's game over
+                            if (boardModel.isGameOver)
+                            {
+                                header.state = "gameOver";
                             }
                             else
                             {
-                                state = "hasNoMine";
+                                header.state = "";
                             }
                         }
-                        else if (isLocked)
-                        {
-                            state = "locked";
-                        }
+
                     }
 
             }

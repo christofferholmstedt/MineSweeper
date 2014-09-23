@@ -8,7 +8,11 @@ ListModel {
      Component.onCompleted: {
         for (var i = 0; i < (rowCount * columnCount); i++)
         {
-            append({squareIndex: i, isVisited: true})
+            append({squareIndex: i,
+                    isVisited: false,
+                    noOfMines: 4,
+                    hasMine: true,
+                    isLocked: false})
         }
     }
 }
