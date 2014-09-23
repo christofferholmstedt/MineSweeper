@@ -8,6 +8,8 @@ Rectangle {
 
     property string title: ""
 
+    signal restartButtonSignal()
+
     Text  {
         id: title
         anchors.left: parent.left
@@ -41,6 +43,7 @@ Rectangle {
             onClicked: {
                 console.log("Pressed restart.");
                 root.state = "";
+                restartButtonSignal();
             }
         }
     }

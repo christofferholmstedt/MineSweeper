@@ -17,6 +17,7 @@ public:
 
     bool getIsGameOver() const;
     void setIsGameOver(bool value);
+    void resetAllSquares();
     void newGame();
 
 private:

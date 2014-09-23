@@ -20,6 +20,7 @@ Window {
 
 
     signal squareClicked(int index, bool leftMouseButton)
+    signal restartCommandGiven()
 
     minimumHeight: height
     minimumWidth: width
@@ -31,6 +32,10 @@ Window {
 
         Header {
             id: header
+
+            Component.onCompleted: {
+                restartButtonSignal.connect(root.restartCommandGiven);
+            }
         }
 
         Grid {

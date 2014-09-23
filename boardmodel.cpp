@@ -140,6 +140,12 @@ void BoardModel::squareClickedSlot(const int index, const bool leftMouseButton)
 
 }
 
+void BoardModel::restartClickedSlot()
+{
+    beginResetModel();
+    board_->newGame();
+    endResetModel();
+}
 
 /***********************************************
  * Private helpers below this comment

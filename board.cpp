@@ -21,12 +21,26 @@ void Board::resize(const int rows, const int columns)
     }
 
     updateNoOfMines();
-    newGame();
+    isGameOver_ = false;
 }
 
 void Board::newGame()
 {
+    resize(grid_.rowSize(), grid_.columnSize());
+    resetAllSquares();
+    updateNoOfMines();
     isGameOver_ = false;
+}
+
+void Board::resetAllSquares()
+{
+    for (int i = 0; i < grid_.rowSize(); i++)
+    {
+       for (int j = 0; j < grid_.columnSize(); j++)
+       {
+          grid_.getSquare(i, j)->setNoOfMines(0);
+       }
+    }
 }
 
 void Board::updateNoOfMines()

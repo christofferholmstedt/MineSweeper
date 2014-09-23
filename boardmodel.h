@@ -37,6 +37,7 @@ signals:
 
 public slots:
     void squareClickedSlot(const int index, const bool leftMouseButton);
+    void restartClickedSlot();
 
 protected:
      QHash<int, QByteArray> roleNames() const;
