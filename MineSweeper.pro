@@ -28,4 +28,5 @@ HEADERS += \
     boardmodel.h
 
 OTHER_FILES += \
-    dummydata/boardModel.qml
+    dummydata/boardModel.qml \
+    README.md
