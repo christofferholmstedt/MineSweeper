@@ -1,6 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>Mine.qml</file>
+        <file>Square.qml</file>
+        <file>Header.qml</file>
+        <file>icons/menu.png</file>
+        <file>icons/black14.png</file>
     </qresource>
 </RCC>
