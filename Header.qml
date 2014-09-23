@@ -19,14 +19,6 @@ Rectangle {
         font.pointSize: 24
     }
 
-    MouseArea {
-        anchors.fill: parent
-
-        onClicked: {
-            console.log("Pressed header.")
-        }
-    }
-
     Image {
         id: menu
         source: "icons/black14.png"
@@ -41,7 +33,6 @@ Rectangle {
             anchors.fill: parent
 
             onClicked: {
-                console.log("Pressed restart.");
                 root.state = "";
                 restartButtonSignal();
             }

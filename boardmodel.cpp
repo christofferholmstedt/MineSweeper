@@ -97,8 +97,6 @@ QVariant BoardModel::data(const QModelIndex &index, int role) const
  ***********************************************/
 void BoardModel::squareClickedSlot(const int index, const bool leftMouseButton)
 {
-    qDebug() << isGameOver();
-
     if (leftMouseButton)
     {
         // Left Mouse Button
@@ -143,7 +141,10 @@ void BoardModel::squareClickedSlot(const int index, const bool leftMouseButton)
 void BoardModel::restartClickedSlot()
 {
     beginResetModel();
-    board_->newGame();
+    if (isGameOver())
+    {
+        board_->newGame();
+    }
     endResetModel();
 }
 

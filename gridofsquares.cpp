@@ -24,9 +24,13 @@ int GridOfSquares::columnSize() const
 
 void GridOfSquares::resize(const int rows, const int columns)
 {
+    // TODO: Remove QUICK FIXES and reset the board with new squares properly from
+    // Board::newGame when restarting a game.
+    rows_.resize( 1 ); // QUICK FIX to reset model when restarting
     rows_.resize( rows );
     for (auto &iterator : rows_)
     {
+        iterator.resize( 1 ); // QUICK FIX to reset model when restarting
         iterator.resize( columns );
     }
     // TODO: Delete old values and populate with new in each square.
