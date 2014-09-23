@@ -16,7 +16,7 @@ Rectangle {
 
     Image {
         id: menu
-        source: "icons/menu.png"
+        source: "icons/black14.png"
 
         width: 40
         height: 40
@@ -28,7 +28,7 @@ Rectangle {
             anchors.fill: parent
 
             onClicked: {
-                console.log("Pressed menu.")
+                console.log("Pressed restart.")
             }
         }
     }

@@ -4,5 +4,6 @@
         <file>Square.qml</file>
         <file>Header.qml</file>
         <file>icons/menu.png</file>
+        <file>icons/black14.png</file>
     </qresource>
 </RCC>
